@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pro Speed Tracker</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <div class="header-bar">
+        <div class="header-section">
+            <button class="icon-btn" onclick="toggleTheme()" id="theme-icon">🌙</button>
+            <div class="time-display" id="digital-time">00:00:00</div>
+        </div>
+
+        <div class="header-section header-center" id="txt-speedometer">SPEEDOMETER</div>
+
+        <div class="header-section header-right">
+            <div class="date-display" id="digital-date">DATE...</div>
+            <select class="lang-select" onchange="changeLang(this.value)">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="hi">हिन्दी</option>
+                <option value="zh">中文</option>
+                <option value="ar">العربية</option>
+                <option value="ru">Русский</option>
+                <option value="pt">Português</option>
+                <option value="ja">日本語</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="main-display">
+        <div class="gauge-container">
+            <canvas id="speedCanvas" width="400" height="400"></canvas>
+            <div id="digital-only">
+                <span id="digi-val">0</span>
+                <span style="display:block; font-size: 1.5rem; opacity:0.5;" id="digi-unit">KM/H</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-container">
+        <div class="btn-group">
+            <button class="btn active" id="btn-kmh" onclick="setUnit(0)">KM/H</button>
+            <button class="btn" id="btn-mph" onclick="setUnit(1)">MPH</button>
+            <button class="btn" id="btn-ms" onclick="setUnit(2)">M/S</button>
+        </div>
+
+        <button class="btn-start" onclick="startTracking()" id="btn-start">START SYSTEM</button>
+
+        <div class="btn-group">
+            <button class="btn active" id="btn-analog" onclick="setView(false)">Analog</button>
+            <button class="btn" id="btn-digital" onclick="setView(true)">Digital</button>
+        </div>
+        <div id="status">SENSORS STANDBY</div>
+    </div>
+
+    <script src="gps.js"></script>
+</body>
+</html>
